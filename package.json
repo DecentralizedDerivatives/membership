@@ -1,24 +1,14 @@
 {
   "name": "DDA_membership",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "npm run devServer",
     "devServer": "npm run lint && cross-env NODE_ENV=dev nodemon index.js",
     "debug": "node --inspect=5000 index.js",
-    "lint": "standard"
+    "lint": "standard",
+    "prod": "cross-env NODE_ENV=prod node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DecentralizedDerivatives/membership.git"
-  },
-  "author": "DDA",
-  "license": "private",
-  "bugs": {
-    "url": "https://github.com/DecentralizedDerivatives/membership/issues"
-  },
-  "homepage": "https://github.com/DecentralizedDerivatives/membership#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "config": "^1.30.0",
