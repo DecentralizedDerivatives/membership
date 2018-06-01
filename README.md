@@ -1,6 +1,6 @@
 # DDA Membership
 
-User Registration
+User Registration for Decentralized Derivatives
 
 ## Requirements
 
