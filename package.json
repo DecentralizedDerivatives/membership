@@ -14,7 +14,7 @@
     "url": "git+https://github.com/DecentralizedDerivatives/membership.git"
   },
   "author": "DDA",
-  "license": "MIT",
+  "license": "private",
   "bugs": {
     "url": "https://github.com/DecentralizedDerivatives/membership/issues"
   },
