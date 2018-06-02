@@ -3,12 +3,11 @@
 var express = require('express')
 var router = express.Router()
 
-router.get('/', handleRoot)
+router.get('/tester', handleApiTest)
 
-function handleRoot (req, res) {
-  res.json({ success: true, message: 'Welcome to the API!' })
+function handleApiTest (req, res) {
+  res.status(200).json({success: true})
 }
-
 router.post('/user', handleNewUser)
 
 function handleNewUser (req, res) {

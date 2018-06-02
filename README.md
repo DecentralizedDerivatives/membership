@@ -18,7 +18,6 @@ User Registration for Decentralized Derivatives
 
 1. Clone the repo: `git clone https://github.com/DecentralizedDerivatives/membership.git`
 2. Install dependencies: `npm install`
-3. Start the server: `npm start`
-5. To debug the API: `npm run debug`; Use Postman to query the API
+3. Start the server: `npm run dev`
 
-Open browser to http://localhost:5678
+Open browser to http://localhost:8855

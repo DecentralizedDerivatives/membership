@@ -3,8 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { Link } from 'react-router-dom'
-import logo from '../images/dda-logo.png'
-// import styles from './styles'
+import logo from '../../images/dda-logo.png'
 
 var styles = function (theme) {
   return {
@@ -24,7 +23,7 @@ function SimpleAppBar (props) {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <Link className={classes.link} to={'/'}>
+        <Link to={'/'}>
           <div className='logo'>
             <img
               src={logo}
