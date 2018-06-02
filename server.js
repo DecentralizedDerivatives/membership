@@ -4,7 +4,6 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var expressWinston = require('express-winston')
 var winston = require('winston')
-var config = require('config')
 // var connection = require('./connection')
 var routes = require('./routes')
 var helmet = require('helmet')
@@ -30,9 +29,11 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+var nodeEnv = process.env.NODE_ENV
+
 // use winston for logging
 // express winston intercepts api requests and logs them to custom db logger
-if (config.util.getEnv('NODE_ENV') !== 'test') {
+if (nodeEnv !== 'test') {
   expressWinston.requestWhitelist.push('body')
   expressWinston.responseWhitelist.push('body')
   app.use(expressWinston.logger({
@@ -53,12 +54,12 @@ app.use(express.static('public'))
 
 // configure routes
 winston.info('Set routes')
-app.use('/v1', routes)
+app.use('/api/v1', routes)
 
-winston.info('Environment is ' + config.util.getEnv('NODE_ENV'))
+winston.info('Environment is ' + nodeEnv)
 
 // express-winston errorLogger makes sense AFTER the router.
-if (config.util.getEnv('NODE_ENV') !== 'test') {
+if (nodeEnv !== 'test') {
   expressWinston.requestWhitelist.push('body')
   expressWinston.responseWhitelist.push('body')
   app.use(expressWinston.errorLogger({
@@ -71,7 +72,7 @@ if (config.util.getEnv('NODE_ENV') !== 'test') {
 // error handlers
 // development error handler
 // will print stacktrace
-if (config.util.getEnv('NODE_ENV') === 'dev') {
+if (nodeEnv === 'dev') {
   app.use(function (err, req, res, next) {
     res.status(err.code || 500)
       .json({
@@ -91,4 +92,9 @@ app.use(function (err, req, res, next) {
     })
 })
 
-module.exports = app
+var port = process.env.PORT || 5678
+
+app.listen(port, function () {
+  winston.info('Server Started on port %d in %s mode', port, nodeEnv)
+  winston.info(new Date().toLocaleString())
+})

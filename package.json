@@ -3,20 +3,37 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run devServer",
-    "devServer": "npm run lint && cross-env NODE_ENV=dev nodemon index.js",
-    "debug": "node --inspect=5000 index.js",
-    "lint": "standard",
-    "prod": "cross-env NODE_ENV=prod node index.js"
+    "start": "npm run clean-up && npm run prod",
+    "dev": "npm run clean-up && parcel index.html --open",
+    "dev-server": "npm run lint && cross-env NODE_ENV=dev nodemon server.js",
+    "prod": "npm run prod-server && npm run parcelBuilder",
+    "prod-server": "cross-env NODE_ENV=prod node server.js",
+    "clean-up": "babel-node ./scripts/clearDistFolder.js",
+    "debug": "node --inspect=5000 server.js",
+    "lint": "standard"
   },
   "dependencies": {
+    "@material-ui/core": "^1.1.0",
     "body-parser": "^1.18.3",
-    "config": "^1.30.0",
+    "classnames": "^2.2.5",
     "cross-env": "^5.1.6",
     "express": "^4.16.3",
     "express-winston": "^2.5.1",
     "helmet": "^3.12.1",
+    "normalize": "^0.3.1",
+    "normalize.css": "^8.0.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.2.2",
     "standard": "^11.0.1",
     "winston": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "chalk": "^2.4.1",
+    "nodemon": "^1.17.5",
+    "parcel-bundler": "^1.8.1",
+    "rimraf": "^2.6.2"
   }
 }

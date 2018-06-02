@@ -4,6 +4,7 @@ function Logger () {
   this.logApiCall = function (meta) {
     if (process.env.NODE_ENV === 'test') { return }
     var res = meta.res || meta
+    if (res && res.statusCode === 404) { return }
     if (meta.err) {
       res.err = meta.err
     }

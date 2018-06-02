@@ -14,7 +14,7 @@ User Registration for Decentralized Derivatives
 
 - Postman  ->  API request simulations
 
-## Usage
+## Local Usage
 
 1. Clone the repo: `git clone https://github.com/DecentralizedDerivatives/membership.git`
 2. Install dependencies: `npm install`
