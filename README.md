@@ -7,12 +7,6 @@ User Registration for Decentralized Derivatives
 - node  -> Javascript framework and server
 - git  -> Source Control
 - npm  -> Package Management
-- nodemon  -> Monitors code changes to immediately update local environment
-- node-inspector  -> Debugging
-
-## Recommended
-
-- Postman  ->  API request simulations
 
 ## Local Usage
 
