@@ -1,28 +1,35 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import BoxLayout from './boxLayout.js'
+import React, { Component } from 'react'
+import InformationForm from './informationForm.js'
 
-const styles = theme => ({
-  content: {
-    fontSize: '18px'
+class InformationBox extends Component {
+  constructor () {
+    super()
+    this.state = {
+      name: '',
+      email: '',
+      address: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-})
-
-function InformationBox (props) {
-  const { classes, action } = props
-  const content = (
-    <Typography className={classes.content} component='div'>
-      Gather Information
-    </Typography>
-  )
-  return (
-    <BoxLayout
-      headline='Information'
-      content={content}
-      buttonText='Submit'
-      buttonAction={action} />
-  )
+  handleChange (field, evt) {
+    this.setState({
+      [field]: evt.target.value
+    })
+  }
+  handleSubmit (e) {
+    if (e && e.preventDefault) { e.preventDefault() }
+    window.alert(JSON.stringify(this.state))
+    this.props.action()
+  }
+  render () {
+    return (
+      <InformationForm
+        {...this.state}
+        handleChange={this.handleChange}
+        action={this.handleSubmit} />
+    )
+  }
 }
 
-export default withStyles(styles)(InformationBox)
+export default InformationBox

@@ -21,8 +21,7 @@ class Main extends Component {
     }
   }
   handleButtonClick (action, e) {
-    e.preventDefault()
-    console.log('action', action)
+    if (e && e.preventDefault) { e.preventDefault() }
     this.setState({ step: action })
   }
   getStepElement (step) {
@@ -43,7 +42,7 @@ class Main extends Component {
     return (
       <div className='main'>
         <SimpleAppBar />
-        <div style={{marginTop: '50px'}}>
+        <div style={{margin: '50px auto'}}>
           {this.getStepElement(this.state.step)}
         </div>
       </div>

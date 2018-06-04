@@ -31,7 +31,7 @@ const styles = theme => ({
     }
   },
   boxFooter: {
-    marginTop: '10px',
+    marginTop: '32px',
     textAlign: 'center'
   }
 })
