@@ -9,22 +9,20 @@ const styles = theme => ({
   }
 })
 
-function WelcomeBox (props) {
+function InformationBox (props) {
   const { classes, action } = props
   const content = (
     <Typography className={classes.content} component='div'>
-      Welcome to DDA!
-      <div>This webpage will take your basic info and the membership fee (be sure that metamask is installed on the mainnet!)</div>
-      <p>Once complete, you will be asked to do KYC/AML validation in an email sent to you.  Once approved, you will be an official of DDA!</p>
+      Gather Information
     </Typography>
   )
   return (
     <BoxLayout
-      headline='DDA Membership Signup'
+      headline='Information'
       content={content}
-      buttonText='Begin'
+      buttonText='Submit'
       buttonAction={action} />
   )
 }
 
-export default withStyles(styles)(WelcomeBox)
+export default withStyles(styles)(InformationBox)

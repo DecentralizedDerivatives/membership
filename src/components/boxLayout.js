@@ -7,9 +7,9 @@ import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   boxLayout: {
-    maxWidth: '320px',
+    maxWidth: '340px',
     margin: 'auto',
-    padding: '24px'
+    padding: '20px'
   },
   boxDivider: {
     margin: '8px 0 16px'
@@ -31,6 +31,7 @@ const styles = theme => ({
     }
   },
   boxFooter: {
+    marginTop: '10px',
     textAlign: 'center'
   }
 })
@@ -50,9 +51,12 @@ function BoxLayout (props) {
           {content}
         </div>
         <div className={classes.boxFooter}>
-          <Button variant='raised' className={classes.button} onClick={buttonAction}>
-            {buttonText}
-          </Button>
+          {buttonAction
+            ? <Button variant='raised' className={classes.button} onClick={buttonAction}>
+              {buttonText}
+            </Button>
+            : ''
+          }
         </div>
       </Paper>
     </div>
