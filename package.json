@@ -13,18 +13,21 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.1.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.5",
     "cross-env": "^5.1.6",
     "express": "^4.16.3",
     "express-winston": "^2.5.1",
     "helmet": "^3.12.1",
+    "mongoose": "^5.1.4",
     "normalize": "^0.3.1",
     "normalize.css": "^8.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
     "standard": "^11.0.1",
+    "validator": "^10.3.0",
     "winston": "^2.4.2"
   },
   "devDependencies": {

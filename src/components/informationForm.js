@@ -15,11 +15,15 @@ const styles = theme => ({
   },
   reviewNote: {
     marginTop: '12px'
+  },
+  errorMessage: {
+    marginTop: '12px',
+    fontWeight: 'bold'
   }
 })
 
 function InformationForm (props) {
-  const { name, email, address, handleChange, action, classes } = props
+  const { name, email, address, errorMessage, handleChange, action, classes } = props
   const content = (
     <div className={classes.content}>
       <div>
@@ -49,6 +53,12 @@ function InformationForm (props) {
       <Typography className={classes.reviewNote} component='div'>
         ** Note by clicking "Submit" you will be asked to pay the fee of .025 Ether.  You will also be sent a link for further KYC / AML verification.
       </Typography>
+      { errorMessage
+        ? <Typography className={classes.errorMessage} component='div'>
+          <span style={{color: 'red'}}>*</span>{errorMessage}
+        </Typography>
+        : ''
+      }
     </div>
   )
   return (

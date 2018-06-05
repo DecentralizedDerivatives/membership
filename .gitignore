@@ -4,3 +4,5 @@ dist/
 
 .npm
 .DS_Store
+
+keys_dev.js

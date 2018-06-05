@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 var expressWinston = require('express-winston')
 var winston = require('winston')
 var path = require('path')
-// var connection = require('./connection')
+var mongoose = require('mongoose')
 var routes = require('./routes')
 var helmet = require('helmet')
 var DbTransport = require('./dbTransport')
@@ -34,6 +34,14 @@ app.use(bodyParser.json())
 
 var nodeEnv = process.env.NODE_ENV
 
+// Hook up MongoDB
+const connectionString = require('./config/keys').mongoURI
+
+mongoose
+  .connect(connectionString)
+  .then(() => winston.info('MongoDB connected.'))
+  .catch(err => console.log(err))
+
 // use winston for logging
 // express winston intercepts api requests and logs them to custom db logger
 expressWinston.requestWhitelist.push('body')
@@ -50,16 +58,11 @@ app.use(expressWinston.logger({
 app.use(express.static(path.join(__dirname, 'dist')))
 
 winston.info('Set routes')
-app.use('/api/v1', routes)
+app.use('/api', routes)
 
 app.get('/*', function (request, response) {
   response.sendFile(path.join(__dirname, 'dist/index.html'))
 })
-// initialize db connection pool
-// winston.info('Initialize database pool')
-// connection.init()
-
-// configure routes
 
 winston.info('Environment is ' + nodeEnv)
 
