@@ -7,7 +7,7 @@ import TermsBox from '../components/termsBox.js'
 import InformationBox from '../components/informationBox.js'
 import DoneBox from '../components/doneBox.js'
 
-// const STEP_WELCOME = 'welcome'
+const STEP_WELCOME = 'welcome'
 const STEP_AGREEMENT = 'agreement'
 const STEP_TERMS = 'terms'
 const STEP_INFORMATION = 'information'
@@ -17,7 +17,7 @@ class Main extends Component {
   constructor () {
     super()
     this.state = {
-      step: STEP_INFORMATION
+      step: STEP_WELCOME
     }
   }
   handleButtonClick (action, e) {

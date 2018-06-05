@@ -30,8 +30,8 @@ class InformationBox extends Component {
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
-        console.log('res', res)
-        // this.props.action()
+        // console.log('res', res)
+        this.props.action()
       })
       .catch(err => {
         this.setState({ errorMessage: err.response.data.message })
