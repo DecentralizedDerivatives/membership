@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import withRoot from './withRoot'
-// import web3 from '../../utilities/web3Provider.js'
+import web3 from '../../utilities/web3Provider.js'
 import SimpleAppBar from '../components/simpleAppBar.js'
 import WelcomeBox from '../components/welcomeBox.js'
 import AgreementBox from '../components/agreementBox.js'
@@ -23,17 +23,20 @@ class Main extends Component {
       connectionMessage: ''
     }
   }
-  async componentDidMount () {
-    // try {
-    //   const accounts = await web3.eth.getAccounts()
-    //   const network = await web3.eth.net.getId()
-    //   if (!accounts.length || network !== 4) {
-    //     this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
-    //   }
-    // } catch (e) {
-    //   console.log('ERROR', e.message)
-    //   this.setState({ connected: false })
-    // }
+  // parcel bundler requires babel transforms to get async / await to work
+  // Heroku doesn't like babel transforms
+  // so you end up with this mess.
+  componentDidMount () {
+    var self = this
+    web3.eth.getAccounts(function (error, accounts) {
+      if (error) { self.setState({ connected: false }) }
+      web3.eth.net.getId(function (err, id) {
+        if (err) { self.setState({ connected: false }) }
+        if (!accounts.length || id !== 4) {
+          self.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+        }
+      })
+    })
   }
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
