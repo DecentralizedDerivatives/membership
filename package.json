@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "npm run clear-dist && npm run build && NODE_ENV=production node server.js",
-    "build": "parcel build index.html --public-url ./",
+    "build": "parcel build --no-cache index.html --public-url ./",
     "dev": "npm run clear-dist && standard && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
     "dev-server": "NODE_ENV=dev nodemon server.js",
