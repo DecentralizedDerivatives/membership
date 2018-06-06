@@ -20,8 +20,9 @@ var styles = function (theme) {
       marginTop: '7%'
     },
     connectedContainer: {
-      height: '80px',
-      marginRight: '20px'
+      marginRight: '20px',
+      marginTop: '28px',
+      textAlign: 'right'
     },
     connectedText: {
       color: theme.colors.white,
@@ -36,6 +37,11 @@ var styles = function (theme) {
       height: '13px',
       width: '13px'
     },
+    connectionMessage: {
+      fontSize: '10px',
+      color: theme.colors.white,
+      fontWeight: theme.fonts.weight.light
+    },
     lens: {
       color: theme.colors.green
     },
@@ -45,30 +51,27 @@ var styles = function (theme) {
   }
 }
 function SimpleAppBar (props) {
-  const { classes, connected } = props
+  const { classes, connected, connectionMessage } = props
   return (
     <AppBar className={classes.appBar}>
       <Grid container direction='row' alignItems='stretch' justify='space-between'>
         <Grid item>
           <Link to={'/'}>
             <div className='logo'>
-              <img
-                src={logo}
-                width='70'
-                alt='Logo'
-                height='70'
-                className={classes.logo}
-              />
+              <img src={logo} width='70' alt='Logo' height='70' className={classes.logo} />
             </div>
           </Link>
         </Grid>
         <Grid item>
-          <Grid container className={classes.connectedContainer} direction='row' alignItems='center'>
+          <Grid container spacing={0} className={classes.connectedContainer} direction='row' justify='flex-end' alignItems='center'>
             <Grid item>
               <Typography className={classes.connectedText}>Connected</Typography>
             </Grid>
             <Grid item>
               <Lens className={`${classes.connectedLens} ${connected ? classes.lens : classes.lensOff}`} />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography className={classes.connectionMessage}>{connectionMessage}</Typography>
             </Grid>
           </Grid>
         </Grid>

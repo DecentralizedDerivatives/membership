@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import withRoot from './withRoot'
+import web3 from '../../utilities/web3Provider.js'
 import SimpleAppBar from '../components/simpleAppBar.js'
 import WelcomeBox from '../components/welcomeBox.js'
 import AgreementBox from '../components/agreementBox.js'
@@ -17,7 +18,21 @@ class Main extends Component {
   constructor () {
     super()
     this.state = {
-      step: STEP_WELCOME
+      step: STEP_WELCOME,
+      connected: true,
+      connectionMessage: ''
+    }
+  }
+  async componentDidMount () {
+    try {
+      const accounts = await web3.eth.getAccounts()
+      const network = await web3.eth.net.getId()
+      if (!accounts.length || network !== 4) {
+        this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+      }
+    } catch (e) {
+      console.log('ERROR', e.message)
+      this.setState({ connected: false })
     }
   }
   handleButtonClick (action, e) {
@@ -41,7 +56,9 @@ class Main extends Component {
   render () {
     return (
       <div className='main'>
-        <SimpleAppBar />
+        <SimpleAppBar
+          connected={this.state.connected}
+          connectionMessage={this.state.connectionMessage} />
         <div style={{margin: '50px auto'}}>
           {this.getStepElement(this.state.step)}
         </div>
