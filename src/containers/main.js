@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import withRoot from './withRoot'
-import web3 from '../../utilities/web3Provider.js'
+// import web3 from '../../utilities/web3Provider.js'
 import SimpleAppBar from '../components/simpleAppBar.js'
 import WelcomeBox from '../components/welcomeBox.js'
 import AgreementBox from '../components/agreementBox.js'
@@ -24,16 +24,16 @@ class Main extends Component {
     }
   }
   async componentDidMount () {
-    try {
-      const accounts = await web3.eth.getAccounts()
-      const network = await web3.eth.net.getId()
-      if (!accounts.length || network !== 4) {
-        this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
-      }
-    } catch (e) {
-      console.log('ERROR', e.message)
-      this.setState({ connected: false })
-    }
+    // try {
+    //   const accounts = await web3.eth.getAccounts()
+    //   const network = await web3.eth.net.getId()
+    //   if (!accounts.length || network !== 4) {
+    //     this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+    //   }
+    // } catch (e) {
+    //   console.log('ERROR', e.message)
+    //   this.setState({ connected: false })
+    // }
   }
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
