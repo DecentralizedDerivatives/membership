@@ -39,8 +39,5 @@
     "nodemon": "^1.17.5",
     "parcel-bundler": "^1.8.1",
     "rimraf": "^2.6.2"
-  },
-  "engines": {
-    "node": "10.3.0"
   }
 }
