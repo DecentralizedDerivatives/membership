@@ -20,7 +20,8 @@ class Main extends Component {
     this.state = {
       step: STEP_WELCOME,
       connected: true,
-      connectionMessage: ''
+      connectionMessage: '',
+      ethAddress: ''
     }
   }
   // parcel bundler requires babel transforms to get async / await to work
@@ -29,11 +30,13 @@ class Main extends Component {
   componentDidMount () {
     var self = this
     web3.eth.getAccounts(function (error, accounts) {
-      if (error) { self.setState({ connected: false }) }
+      if (error) { self.setState({ connected: false }); return }
       web3.eth.net.getId(function (err, id) {
-        if (err) { self.setState({ connected: false }) }
+        if (err) { self.setState({ connected: false }); return }
         if (!accounts.length || id !== 4) {
           self.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+        } else {
+          self.setState({ ethAddress: accounts[0] })
         }
       })
     })
@@ -49,7 +52,7 @@ class Main extends Component {
       case STEP_TERMS:
         return (<TermsBox action={this.handleButtonClick.bind(this, STEP_INFORMATION)} />)
       case STEP_INFORMATION:
-        return (<InformationBox action={this.handleButtonClick.bind(this, STEP_DONE)} />)
+        return (<InformationBox address={this.state.ethAddress} action={this.handleButtonClick.bind(this, STEP_DONE)} />)
       case STEP_DONE:
         return (<DoneBox />)
       default:

@@ -3,12 +3,12 @@ import InformationForm from './informationForm.js'
 import axios from 'axios'
 
 class InformationBox extends Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
       name: '',
       email: '',
-      address: '',
+      address: props.address,
       errorMessage: null
     }
     this.handleChange = this.handleChange.bind(this)
