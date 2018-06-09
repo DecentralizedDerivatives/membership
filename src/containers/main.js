@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import 'babel-polyfill'
 import withRoot from './withRoot'
 import web3 from '../../utilities/web3Provider.js'
 import SimpleAppBar from '../components/simpleAppBar.js'
@@ -24,22 +25,19 @@ class Main extends Component {
       ethAddress: ''
     }
   }
-  // parcel bundler requires babel transforms to get async / await to work
-  // Heroku doesn't like babel transforms
-  // so you end up with this mess.
-  componentDidMount () {
-    var self = this
-    web3.eth.getAccounts(function (error, accounts) {
-      if (error) { self.setState({ connected: false }); return }
-      web3.eth.net.getId(function (err, id) {
-        if (err) { self.setState({ connected: false }); return }
-        if (!accounts.length || id !== 4) {
-          self.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
-        } else {
-          self.setState({ ethAddress: accounts[0] })
-        }
-      })
-    })
+  async componentDidMount () {
+    try {
+      const accounts = await web3.eth.getAccounts()
+      const network = await web3.eth.net.getId()
+      if (!accounts.length || network !== 4) {
+        this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+      } else {
+        this.setState({ ethAddress: accounts[0] })
+      }
+    } catch (e) {
+      // console.log('ERROR', e.message)
+      this.setState({ connected: false })
+    }
   }
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }

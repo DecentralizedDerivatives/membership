@@ -24,7 +24,7 @@ async function handleNewUser (req, res) {
   try {
     const user = await User.findOne({ address: data.address })
     if (user) {
-      res.status(400).json({message: 'Address already exists.', err: {status_code: 400, code: 'ACCOUNT_EXISTS'}})
+      res.status(400).json({message: 'Ethereum Address already exists.', err: {status_code: 400, code: 'ACCOUNT_EXISTS'}})
     } else {
       const newUser = new User({
         name: data.name,
