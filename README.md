@@ -2,12 +2,6 @@
 
 User Registration for Decentralized Derivatives
 
-## Requirements
-
-- node  -> Javascript framework and server
-- git  -> Source Control
-- npm  -> Package Management
-
 ## Local Usage
 
 1. Clone the repo: `git clone https://github.com/DecentralizedDerivatives/membership.git`
