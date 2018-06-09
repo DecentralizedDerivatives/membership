@@ -65,6 +65,7 @@ function InformationForm (props) {
     <BoxLayout
       headline='Information'
       content={content}
+      loading={props.loading}
       buttonText='Submit'
       buttonAction={action} />
   )

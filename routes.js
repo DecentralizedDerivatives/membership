@@ -32,7 +32,7 @@ async function handleNewUser (req, res) {
         address: data.address
       })
       const result = await newUser.save()
-      res.json({result})
+      res.json(result)
     }
   } catch (e) {
     res.status(400).json({message: 'Something went wrong. ' + e.message, err: e})

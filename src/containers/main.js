@@ -31,12 +31,13 @@ class Main extends Component {
       const network = await web3.eth.net.getId()
       if (!accounts.length || network !== 4) {
         this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+        return
       } else {
-        this.setState({ ethAddress: accounts[0] })
+        this.setState({ connected: true, connectionMessage: '', ethAddress: accounts[0] })
       }
     } catch (e) {
       // console.log('ERROR', e.message)
-      this.setState({ connected: false })
+      this.setState({ connected: false, connectionMessage: e.message })
     }
   }
   handleButtonClick (action, e) {

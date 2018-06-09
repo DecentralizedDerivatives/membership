@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import InformationForm from './informationForm.js'
 import axios from 'axios'
+import web3 from '../../utilities/web3Provider.js'
+import membershipAbi from '../../utilities/membershipAbi.js'
+import InformationForm from './informationForm.js'
 
 class InformationBox extends Component {
   constructor (props) {
@@ -9,7 +11,8 @@ class InformationBox extends Component {
       name: '',
       email: '',
       address: props.address,
-      errorMessage: null
+      errorMessage: null,
+      loading: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,21 +30,37 @@ class InformationBox extends Component {
       email: this.state.email,
       address: this.state.address
     }
+    var self = this
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
-        // console.log('res', res)
-        this.props.action()
+        self.requestMembership(newUser.address)
+        self.setState({ loading: true, errorMessage: null })
       })
       .catch(err => {
-        this.setState({ errorMessage: err.response.data.message })
+        console.log('CATCH ERROR', err)
+        self.setState({ errorMessage: err.message, loading: false })
       })
+  }
+  async requestMembership (address) {
+    var self = this
+    try {
+      var memberContract = await new web3.eth.Contract(membershipAbi, '0xde545ff27a2e83e4dc7827bc926bd03a9a7e75e9')
+      var fee = await memberContract.methods.memberFee().call({from: address})
+      var receipt = await memberContract.methods.requestMembership().send({from: address, value: fee})
+      console.log('Receipt', receipt)
+      self.props.action()
+    } catch (e) {
+      console.log('MEMBERSHIP ERROR', e)
+      self.setState({ errorMessage: e.message, loading: false })
+    }
   }
   render () {
     return (
       <InformationForm
         {...this.state}
         handleChange={this.handleChange}
+        loading={this.state.loading}
         action={this.handleSubmit} />
     )
   }

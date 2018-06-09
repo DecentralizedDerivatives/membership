@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
+import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
@@ -51,11 +52,12 @@ function BoxLayout (props) {
           {content}
         </div>
         <div className={classes.boxFooter}>
-          {buttonAction
-            ? <Button variant='raised' className={classes.button} onClick={buttonAction}>
-              {buttonText}
-            </Button>
-            : ''
+          {props.loading ? <LinearProgress />
+            : buttonAction
+              ? <Button variant='raised' className={classes.button} onClick={buttonAction}>
+                {buttonText}
+              </Button>
+              : ''
           }
         </div>
       </Paper>
