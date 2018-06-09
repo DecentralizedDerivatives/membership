@@ -15,3 +15,7 @@ User Registration for Decentralized Derivatives
 3. Start the server: `npm run dev`
 
 Open browser to http://localhost:8855
+
+## Deployment
+
+1. Heroku will auto deploy from Master after commit-push.
