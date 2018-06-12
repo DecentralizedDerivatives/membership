@@ -39,7 +39,7 @@ class InformationBox extends Component {
       })
       .catch(err => {
         console.log('CATCH ERROR', err)
-        self.setState({ errorMessage: err.message, loading: false })
+        self.setState({ errorMessage: err.response.data.message, loading: false })
       })
   }
   async requestMembership (address) {
@@ -47,7 +47,11 @@ class InformationBox extends Component {
     try {
       var memberContract = await new web3.eth.Contract(membershipAbi, '0xde545ff27a2e83e4dc7827bc926bd03a9a7e75e9')
       var fee = await memberContract.methods.memberFee().call({from: address})
-      var receipt = await memberContract.methods.requestMembership().send({from: address, value: fee})
+      var options = { from: address, value: fee }
+      if (process.env.NODE_ENV === 'dev') {
+        options.gas = 7652476
+      }
+      var receipt = await memberContract.methods.requestMembership().send(options)
       console.log('Receipt', receipt)
       self.props.action()
     } catch (e) {
