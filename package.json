@@ -9,7 +9,8 @@
     "dev": "npm run clear-dist && standard && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
     "dev-server": "NODE_ENV=dev nodemon server.js",
-    "clear-dist": "babel-node ./scripts/clearDistFolder.js"
+    "clear-dist": "babel-node ./scripts/clearDistFolder.js",
+    "test": "CI=true react-scripts test --env=jsdom"
   },
   "dependencies": {
     "@material-ui/core": "^1.2.0",
@@ -28,18 +29,20 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.4",
     "standard": "^11.0.1",
     "validator": "^10.3.0",
     "web3": "^1.0.0-beta.34",
     "winston": "^2.4.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "chalk": "^2.4.1",
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.5",
     "parcel-bundler": "^1.8.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "enzyme": "*",
+    "react-addons-test-utils": "*"
   },
   "browserslist": [
     "> 1%",
