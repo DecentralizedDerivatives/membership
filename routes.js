@@ -26,9 +26,11 @@ async function handleNewUser (req, res) {
     if (user) {
       res.status(400).json({message: 'Ethereum Address already exists.', err: {status_code: 400, code: 'ACCOUNT_EXISTS'}})
     } else {
+      console.log('here comes the phone number', data.phone)
       const newUser = new User({
         name: data.name,
         email: data.email,
+        phone: data.phone,
         address: data.address
       })
       const result = await newUser.save()

@@ -23,15 +23,16 @@ const styles = theme => ({
 })
 
 function InformationForm (props) {
-  const { name, email, address, errorMessage, handleChange, action, classes } = props
+  const { name, email, phone, address, errorMessage, handleChange, action, classes, twentyUSDOfEth } = props
   const content = (
     <div className={classes.content}>
       <div>
         <TextField
           id='name'
-          label='Name'
+          label='Full Name'
           className={classes.textField}
           value={name}
+          placeholder={'e.g. John Smith'}
           onChange={handleChange.bind(this, 'name')} />
       </div>
       <div>
@@ -44,6 +45,14 @@ function InformationForm (props) {
       </div>
       <div>
         <TextField
+          id='phone'
+          label='Phone'
+          className={classes.textField}
+          value={phone}
+          onChange={handleChange.bind(this, 'phone')} />
+      </div>
+      <div>
+        <TextField
           id='address'
           label='Ethereum Address'
           className={classes.textField}
@@ -51,7 +60,7 @@ function InformationForm (props) {
           onChange={handleChange.bind(this, 'address')} />
       </div>
       <Typography className={classes.reviewNote} component='div'>
-        ** Note by clicking "Submit" you will be asked to pay the fee of .025 Ether.  You will also be sent a link for further KYC / AML verification.
+        ** Note by clicking "Submit" you will be asked to pay the fee of {twentyUSDOfEth} Ether.  You will also be sent a link for further KYC / AML verification.
       </Typography>
       { errorMessage
         ? <Typography className={classes.errorMessage} component='div'>

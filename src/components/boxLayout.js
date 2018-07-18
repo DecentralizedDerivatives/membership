@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   boxLayout: {
-    maxWidth: '340px',
+    maxWidth: '500px',
     margin: 'auto',
     padding: '20px'
   },

@@ -43,6 +43,7 @@ class Main extends Component {
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
     this.setState({ step: action })
+    window.scrollTo(0,0)
   }
   getStepElement (step) {
     switch (step) {
