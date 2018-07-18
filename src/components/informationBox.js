@@ -10,12 +10,31 @@ class InformationBox extends Component {
     this.state = {
       name: '',
       email: '',
+      phone: '',
       address: props.address,
       errorMessage: null,
-      loading: false
+      loading: false,
+      twentyUSDOfEth: 0
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  componentDidMount(){
+    var self = this
+    axios
+      .get('https://api.gdax.com/products/ETH-USD/ticker')
+      .then(function(response) {
+        var price = response.data.price
+        var currentTwentyDollarsOfEth = (1/price * 20).toPrecision(2)
+        self.setState({
+          errorMessage: null, 
+          twentyUSDOfEth: currentTwentyDollarsOfEth
+        })
+      })
+      .catch(err => {
+        console.log('CATCH ERROR', err)
+        self.setState({errorMessage: err.response.data.message, loading: false})
+      })
   }
   handleChange (field, evt) {
     this.setState({
@@ -28,6 +47,7 @@ class InformationBox extends Component {
     var newUser = {
       name: this.state.name,
       email: this.state.email,
+      phone: this.state.phone,
       address: this.state.address
     }
     var self = this
