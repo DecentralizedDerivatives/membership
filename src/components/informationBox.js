@@ -51,6 +51,8 @@ class InformationBox extends Component {
       address: this.state.address
     }
     var self = this
+    self.requestMembership(newUser.address)
+    /*
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
@@ -61,21 +63,22 @@ class InformationBox extends Component {
         console.log('CATCH ERROR', err)
         self.setState({ errorMessage: err.response.data.message, loading: false })
       })
+      */
 
     var selifiedInfo = {
       mobile: this.state.phone,
-      email: this.state.email
+      type: 'sms'
     }
     var headers = {
       'Authorization': "Bearer 1hfeZ9IsV345H6SdrksAle",
       'Cache-Control': "no-cache",
-      'Postman-Token': "050e535d-4a7f-414e-8f68-59be3a4a3eb1",
-      'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+      'content-type': "application/json"
     }
     axios
     .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
     .then( res => {
       self.setState({loading: false})
+      alert('api call sent')
     })
     .catch(err => {
       console.log('CATCH ERROR', err)
