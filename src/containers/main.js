@@ -40,6 +40,7 @@ class Main extends Component {
       this.setState({ connected: false, connectionMessage: e.message })
     }
   }
+
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
     this.setState({ step: action })
