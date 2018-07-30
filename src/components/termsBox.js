@@ -273,7 +273,7 @@ function TermsBox (props) {
         </li>
         <li>
           <p>
-            Company’s Proprietary Rights. As between you and us, we and our licensors own the Site, which is protected by 
+            <strong>Company’s Proprietary Rights.</strong> As between you and us, we and our licensors own the Site, which is protected by 
             proprietary rights and laws. All trade names, trademarks, service marks, logos, and copyrightable works available 
             through the Site are the property of their respective owners and nothing contained on the Site should be construed 
             as granting any right to use any trade names, trademarks, service marks, logos, or copyrightable works without the 
@@ -284,7 +284,7 @@ function TermsBox (props) {
         </li>
         <li>
           <p>
-            Risks. Use of the Site and participation in Transactions may carry financial risk. You acknowledge and agree 
+            <strong>Risks.</strong> Use of the Site and participation in Transactions may carry financial risk. You acknowledge and agree 
             that you are aware of such risks, including the following:
           </p>
           <p>
