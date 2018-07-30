@@ -3,6 +3,7 @@ import axios from 'axios'
 import web3 from '../../utilities/web3Provider.js'
 import membershipAbi from '../../utilities/membershipAbi.js'
 import InformationForm from './informationForm.js'
+import ThankYouModal from './ThankYouModal'
 
 class InformationBox extends Component {
   constructor (props) {
@@ -14,7 +15,8 @@ class InformationBox extends Component {
       address: props.address,
       errorMessage: null,
       loading: false,
-      twentyUSDOfEth: 0
+      twentyUSDOfEth: 0,
+      showModal: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,7 +54,7 @@ class InformationBox extends Component {
     }
     var self = this
     self.requestMembership(newUser.address)
-    /*
+    
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
@@ -63,7 +65,7 @@ class InformationBox extends Component {
         console.log('CATCH ERROR', err)
         self.setState({ errorMessage: err.response.data.message, loading: false })
       })
-      */
+      
 
     var selifiedInfo = {
       mobile: this.state.phone,
@@ -74,11 +76,11 @@ class InformationBox extends Component {
       'Cache-Control': "no-cache",
       'content-type': "application/json"
     }
+    self.setState({showModal:true})
     axios
     .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
     .then( res => {
-      self.setState({loading: false})
-      alert('api call sent')
+      self.setState({loading: false,showModal:true})
     })
     .catch(err => {
       console.log('CATCH ERROR', err)
@@ -105,11 +107,14 @@ class InformationBox extends Component {
   }
   render () {
     return (
-      <InformationForm
-        {...this.state}
-        handleChange={this.handleChange}
-        loading={this.state.loading}
-        action={this.handleSubmit} />
+      <div>
+        <InformationForm
+          {...this.state}
+          handleChange={this.handleChange}
+          loading={this.state.loading}
+          action={this.handleSubmit} />
+          <ThankYouModal showModal={this.state.showModal}/>
+      </div>
     )
   }
 }

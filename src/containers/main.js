@@ -8,6 +8,7 @@ import AgreementBox from '../components/agreementBox.js'
 import TermsBox from '../components/termsBox.js'
 import InformationBox from '../components/informationBox.js'
 import DoneBox from '../components/doneBox.js'
+import ThankYouModal from '../components/ThankYouModal'
 
 const STEP_WELCOME = 'welcome'
 const STEP_AGREEMENT = 'agreement'
