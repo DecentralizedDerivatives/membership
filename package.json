@@ -4,14 +4,15 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "npm run clear-dist && npm run build",
+    "heroku-prebuild": "npm run clear-dist",
+    "start": "npm run build",
     "heroku-postbuild": "NODE_ENV=production node server.js",
     "build": "parcel build --no-cache index.html --public-url ./",
     "dev": "npm run clear-dist && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
     "dev-server": "NODE_ENV=dev nodemon server.js",
     "clear-dist": "babel-node ./scripts/clearDistFolder.js",
-    "test": "CI=true react-scripts test --env=jsdom"
+    "test": "jest --env=node"
   },
   "dependencies": {
     "@material-ui/core": "^1.2.0",
@@ -30,7 +31,6 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.1.4",
     "validator": "^10.3.0",
     "web3": "^1.0.0-beta.34",
     "websocket": "^1.0.26",
@@ -41,11 +41,15 @@
     "chalk": "^2.4.1",
     "concurrently": "^3.5.1",
     "enzyme": "*",
+    "jest": "^23.4.2",
     "nodemon": "^1.17.5",
     "parcel-bundler": "^1.8.1",
     "react-addons-test-utils": "*",
-    "standard": "^11.0.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "standard": "^11.0.1"
+  },
+  "jest": {
+    "verbose": true
   },
   "browserslist": [
     "> 1%",
