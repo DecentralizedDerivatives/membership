@@ -8,7 +8,7 @@ import AgreementBox from '../components/agreementBox.js'
 import TermsBox from '../components/termsBox.js'
 import InformationBox from '../components/informationBox.js'
 import DoneBox from '../components/doneBox.js'
-import ThankYouModal from '../components/ThankYouModal'
+// import ThankYouModal from '../components/ThankYouModal'
 
 const STEP_WELCOME = 'welcome'
 const STEP_AGREEMENT = 'agreement'
@@ -45,7 +45,7 @@ class Main extends Component {
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
     this.setState({ step: action })
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }
   getStepElement (step) {
     switch (step) {
