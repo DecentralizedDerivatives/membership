@@ -37,13 +37,14 @@
     "winston": "^2.4.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "chalk": "^2.4.1",
     "concurrently": "^3.5.1",
+    "enzyme": "*",
     "nodemon": "^1.17.5",
     "parcel-bundler": "^1.8.1",
-    "rimraf": "^2.6.2",
-    "enzyme": "*",
-    "react-addons-test-utils": "*"
+    "react-addons-test-utils": "*",
+    "rimraf": "^2.6.2"
   },
   "browserslist": [
     "> 1%",
