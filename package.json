@@ -4,9 +4,7 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "heroku-prebuild": "npm run clear-dist",
-    "start": "NODE_ENV=production npm run build",
-    "heroku-postbuild": "NODE_ENV=production node server.js",
+    "start": "npm run clear-dist && npm run build && NODE_ENV=production node server.js",
     "build": "parcel build --no-cache index.html --public-url ./",
     "dev": "npm run clear-dist && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
