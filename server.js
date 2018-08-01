@@ -38,7 +38,7 @@ var nodeEnv = process.env.NODE_ENV
 const connectionString = require('./config/keys').mongoURI
 
 mongoose
-  .connect(connectionString)
+  .connect(connectionString, { useNewUrlParser: true })
   .then(() => winston.info('MongoDB connected.'))
   .catch(err => console.log(err))
 
