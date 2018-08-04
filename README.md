@@ -12,4 +12,6 @@ Open browser to http://localhost:8855
 
 ## Deployment
 
-1. Heroku will auto deploy from Master after commit-push.
+1. Heroku will auto deploy from Master after commit-push. Heroku is particular about
+the order of deployment process.  Leave the postinstall, build, and start scripts alone
+unless you're sure.
