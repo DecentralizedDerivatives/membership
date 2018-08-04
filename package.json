@@ -4,9 +4,8 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "prestart": "rm -rf .cache && npm run clear-dist && NODE_ENV=production node server.js",
-    "start": "parcel index.html",
-    "postinstall": "npm run build",
+    "start": "NODE_ENV=production node server.js && parcel index.html",
+    "postinstall": "npm run clear-dist && npm run build",
     "build": "parcel build --no-cache index.html --public-url ./",
     "dev": "npm run clear-dist && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
