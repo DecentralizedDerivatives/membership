@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "prestart": "rm -rf .cache",
-    "start": "npm run clear-dist && npm run build && NODE_ENV=production node server.js",
+    "start": "npm run clear-dist && NODE_ENV=production node server.js",
+    "heroku-postbuild": "npm run build",
     "build": "parcel build --no-cache index.html --public-url ./",
     "dev": "npm run clear-dist && concurrently -k \"npm run dev-build\" \"npm run dev-server\"",
     "dev-build": "parcel watch index.html --public-url ./",
