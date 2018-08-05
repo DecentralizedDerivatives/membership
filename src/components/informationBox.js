@@ -21,15 +21,15 @@ class InformationBox extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  componentDidMount(){
+  componentDidMount () {
     var self = this
     axios
       .get('https://api.gdax.com/products/ETH-USD/ticker')
-      .then(function(response) {
+      .then(function (response) {
         var price = response.data.price
-        var currentTwentyDollarsOfEth = (1/price * 20).toPrecision(2)
+        var currentTwentyDollarsOfEth = (1 / price * 20).toPrecision(2)
         self.setState({
-          errorMessage: null, 
+          errorMessage: null,
           twentyUSDOfEth: currentTwentyDollarsOfEth
         })
       })
@@ -54,7 +54,7 @@ class InformationBox extends Component {
     }
     var self = this
     self.requestMembership(newUser.address)
-    
+
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
@@ -65,7 +65,7 @@ class InformationBox extends Component {
         console.log('CATCH ERROR', err)
         self.setState({ errorMessage: err.response.data.message, loading: false })
       })
-      
+
 
     var selifiedInfo = {
       mobile: this.state.phone,
@@ -86,7 +86,7 @@ class InformationBox extends Component {
       console.log('CATCH ERROR', err)
       self.setState({ errorMessage: err.response.data.message, loading: false})
     })
-      
+
   }
   async requestMembership (address) {
     var self = this
