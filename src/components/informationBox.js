@@ -15,28 +15,10 @@ class InformationBox extends Component {
       address: props.address,
       errorMessage: null,
       loading: false,
-      twentyUSDOfEth: 0,
       showModal: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  componentDidMount () {
-    var self = this
-    axios
-      .get('https://api.gdax.com/products/ETH-USD/ticker')
-      .then(function (response) {
-        var price = response.data.price
-        var currentTwentyDollarsOfEth = (1 / price * 20).toPrecision(2)
-        self.setState({
-          errorMessage: null,
-          twentyUSDOfEth: currentTwentyDollarsOfEth
-        })
-      })
-      .catch(err => {
-        console.log('CATCH ERROR', err)
-        self.setState({errorMessage: err.response.data.message, loading: false})
-      })
   }
   handleChange (field, evt) {
     this.setState({
@@ -77,16 +59,19 @@ class InformationBox extends Component {
       'content-type': "application/json"
     }
     self.setState({showModal:true})
-    axios
-    .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
-    .then( res => {
-      self.setState({loading: false,showModal:true})
-    })
-    .catch(err => {
-      console.log('CATCH ERROR', err)
-      self.setState({ errorMessage: err.response.data.message, loading: false})
-    })
-
+      axios
+      .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
+      .then( res => {
+        self.setState({loading: false,showModal:true})
+        console.log('headers',headers)
+        console.log('selified',selifiedInfo)
+      })
+      .catch(err => {
+        console.log('headers',headers)
+        console.log('selified',selifiedInfo)
+        console.log('CATCH ERROR', err)
+        self.setState({ errorMessage: err.response.data.message, loading: false})
+      })
   }
   async requestMembership (address) {
     var self = this
