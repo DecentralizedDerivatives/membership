@@ -76,7 +76,7 @@ class InformationBox extends Component {
   async requestMembership (address) {
     var self = this
     try {
-      var memberContract = await new web3.eth.Contract(membershipAbi, '0x620b6b6ac75ad9234eb6c533688ddd8a5948650e')
+      var memberContract = await new web3.eth.Contract(membershipAbi, '0xd33615c5ea5d703f06d237f6c56ff2400b564c77')
       var fee = await memberContract.methods.memberFee().call({from: address})
       var options = { from: address, value: fee }
       if (process.env.NODE_ENV === 'dev') {

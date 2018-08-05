@@ -29,8 +29,8 @@ class Main extends Component {
     try {
       const accounts = await web3.eth.getAccounts()
       const network = await web3.eth.net.getId()
-      if (!accounts.length || network !== 4) {
-        this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+      if (!accounts.length || network !== 1) {
+        this.setState({ connected: false, connectionMessage: 'Ethereum Mainnet Testnet required.' })
         return
       } else {
         this.setState({ connected: true, connectionMessage: '', ethAddress: accounts[0] })
