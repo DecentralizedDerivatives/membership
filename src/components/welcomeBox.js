@@ -15,7 +15,7 @@ function WelcomeBox (props) {
     <Typography className={classes.content} component='div'>
       Welcome to DDA!
       <div>This webpage will take your basic info and the membership fee (be sure that metamask is installed on the mainnet!)</div>
-      <p>Once complete, you will be asked to do KYC/AML validation in an email sent to you.  Once approved, you will be an official of DDA!</p>
+      <p>Once complete, you will be asked to do KYC/AML validation in an email sent to you.  Once approved, you will be an official member of DDA!</p>
     </Typography>
   )
   return (

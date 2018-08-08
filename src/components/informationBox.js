@@ -35,7 +35,8 @@ class InformationBox extends Component {
       address: this.state.address
     }
     var self = this
-    self.requestMembership(newUser.address)
+
+    //self.requestMembership(newUser.address)
 
     axios
       .post('/api/users/subscribe', newUser)
@@ -48,7 +49,6 @@ class InformationBox extends Component {
         self.setState({ errorMessage: err.response.data.message, loading: false })
       })
 
-
     var selifiedInfo = {
       mobile: this.state.phone,
       type: 'sms'
@@ -59,19 +59,18 @@ class InformationBox extends Component {
       'content-type': "application/json"
     }
     self.setState({showModal:true})
-      axios
-      .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
-      .then( res => {
-        self.setState({loading: false,showModal:true})
-        console.log('headers',headers)
-        console.log('selified',selifiedInfo)
-      })
-      .catch(err => {
-        console.log('headers',headers)
-        console.log('selified',selifiedInfo)
-        console.log('CATCH ERROR', err)
-        self.setState({ errorMessage: err.response.data.message, loading: false})
-      })
+    
+    axios
+    .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
+    .then( res => {
+      self.setState({loading: false,showModal:true})
+    })
+    .catch(err => {
+      console.log('CATCH ERROR', err)
+      self.setState({ errorMessage: err.response.data.message, loading: false})
+    })
+      
+
   }
   async requestMembership (address) {
     var self = this
@@ -83,7 +82,6 @@ class InformationBox extends Component {
         options.gas = 7652476
       }
       var receipt = await memberContract.methods.requestMembership().send(options)
-      console.log('Receipt', receipt)
       self.props.action()
     } catch (e) {
       console.log('MEMBERSHIP ERROR', e)
