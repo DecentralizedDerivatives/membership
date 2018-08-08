@@ -60,7 +60,7 @@ function InformationForm (props) {
           onChange={handleChange.bind(this, 'address')} />
       </div>
       <Typography className={classes.reviewNote} component='div'>
-        ** Note by clicking "Submit" you will be asked to pay the fee of {twentyUSDOfEth} Ether.  You will also be sent a link for further KYC / AML verification.
+        ** Note by clicking "Submit" you will be asked to pay the fee of .025 Ether.  You will also be sent a link for further KYC / AML verification.
       </Typography>
       { errorMessage
         ? <Typography className={classes.errorMessage} component='div'>

@@ -3,3 +3,4 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   module.exports = require('./keys_dev')
 }
+console.log('node_env',process.env.NODE_ENV)

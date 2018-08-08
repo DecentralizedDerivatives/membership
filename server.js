@@ -11,7 +11,7 @@ var helmet = require('helmet')
 var DbTransport = require('./dbTransport')
 
 var app = express()
-var port = process.env.PORT || 8855
+var PORT= process.env.PORT ||5000
 
 // help secure Express apps with various HTTP headers
 app.use(helmet())
@@ -38,7 +38,7 @@ var nodeEnv = process.env.NODE_ENV
 const connectionString = require('./config/keys').mongoURI
 
 mongoose
-  .connect(connectionString)
+  .connect(connectionString, { useNewUrlParser: true })
   .then(() => winston.info('MongoDB connected.'))
   .catch(err => console.log(err))
 
@@ -97,7 +97,7 @@ app.use(function (err, req, res, next) {
     })
 })
 
-app.listen(port, function () {
-  winston.info('Server Started on port %d in %s mode', port, nodeEnv)
+app.listen(PORT, function () {
+  winston.info('Server Started on port %d in %s mode', PORT, nodeEnv)
   winston.info(new Date().toLocaleString())
 })

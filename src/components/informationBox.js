@@ -15,28 +15,10 @@ class InformationBox extends Component {
       address: props.address,
       errorMessage: null,
       loading: false,
-      twentyUSDOfEth: 0,
       showModal: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  componentDidMount(){
-    var self = this
-    axios
-      .get('https://api.gdax.com/products/ETH-USD/ticker')
-      .then(function(response) {
-        var price = response.data.price
-        var currentTwentyDollarsOfEth = (1/price * 20).toPrecision(2)
-        self.setState({
-          errorMessage: null, 
-          twentyUSDOfEth: currentTwentyDollarsOfEth
-        })
-      })
-      .catch(err => {
-        console.log('CATCH ERROR', err)
-        self.setState({errorMessage: err.response.data.message, loading: false})
-      })
   }
   handleChange (field, evt) {
     this.setState({
@@ -53,8 +35,9 @@ class InformationBox extends Component {
       address: this.state.address
     }
     var self = this
+
     //self.requestMembership(newUser.address)
-    
+
     axios
       .post('/api/users/subscribe', newUser)
       .then(res => {
@@ -87,11 +70,12 @@ class InformationBox extends Component {
       self.setState({ errorMessage: err.response.data.message, loading: false})
     })
       
+
   }
   async requestMembership (address) {
     var self = this
     try {
-      var memberContract = await new web3.eth.Contract(membershipAbi, '0xde545ff27a2e83e4dc7827bc926bd03a9a7e75e9')
+      var memberContract = await new web3.eth.Contract(membershipAbi, '0xd33615c5ea5d703f06d237f6c56ff2400b564c77')
       var fee = await memberContract.methods.memberFee().call({from: address})
       var options = { from: address, value: fee }
       if (process.env.NODE_ENV === 'dev') {

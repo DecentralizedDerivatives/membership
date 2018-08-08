@@ -8,7 +8,6 @@ import AgreementBox from '../components/agreementBox.js'
 import TermsBox from '../components/termsBox.js'
 import InformationBox from '../components/informationBox.js'
 import DoneBox from '../components/doneBox.js'
-import ThankYouModal from '../components/ThankYouModal'
 
 const STEP_WELCOME = 'welcome'
 const STEP_AGREEMENT = 'agreement'
@@ -30,8 +29,8 @@ class Main extends Component {
     try {
       const accounts = await web3.eth.getAccounts()
       const network = await web3.eth.net.getId()
-      if (!accounts.length || network !== 4) {
-        this.setState({ connected: false, connectionMessage: 'Ethereum Rinkeby Testnet required.' })
+      if (!accounts.length || network !== 1) {
+        this.setState({ connected: false, connectionMessage: 'Ethereum Mainnet Testnet required.' })
         return
       } else {
         this.setState({ connected: true, connectionMessage: '', ethAddress: accounts[0] })
@@ -45,7 +44,7 @@ class Main extends Component {
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
     this.setState({ step: action })
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }
   getStepElement (step) {
     switch (step) {
