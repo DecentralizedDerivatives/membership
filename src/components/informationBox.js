@@ -59,7 +59,24 @@ class InformationBox extends Component {
       'content-type': "application/json"
     }
     self.setState({showModal:true})
-    
+    axios
+  .post(
+    "https://lab.selified.com/api/request/facematch-id",
+    { type: "sms", mobile: "+4438128638" },
+    {
+      headers: {
+        Authorization: "Bearer 1M8wJEWIAcIEfILnCHpISD",
+        "Content-type": "application/json"
+      }
+    }
+  )
+  .then(response => {
+    console.log("success...", response.data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+  /*
     axios
     .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
     .then( res => {
@@ -69,7 +86,7 @@ class InformationBox extends Component {
       console.log('CATCH ERROR', err)
       self.setState({ errorMessage: err.response.data.message, loading: false})
     })
-      
+  */
 
   }
   async requestMembership (address) {
