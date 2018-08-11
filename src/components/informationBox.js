@@ -36,18 +36,18 @@ class InformationBox extends Component {
     }
     var self = this
 
-    //self.requestMembership(newUser.address)
+    self.requestMembership(newUser.address)
 
-    // axios
-    //   .post('/api/users/subscribe', newUser)
-    //   .then(res => {
-    //     self.requestMembership(newUser.address)
-    //     self.setState({ loading: true, errorMessage: null })
-    //   })
-    //   .catch(err => {
-    //     console.log('CATCH ERROR', err)
-    //     self.setState({ errorMessage: err.response.data.message, loading: false })
-    //   })
+    axios
+      .post('/api/users/subscribe', newUser)
+      .then(res => {
+        self.requestMembership(newUser.address)
+        self.setState({ loading: true, errorMessage: null })
+      })
+      .catch(err => {
+        console.log('CATCH ERROR', err)
+        self.setState({ errorMessage: err.response.data.message, loading: false })
+      })
 
     self.setState({showModal:true})
     
