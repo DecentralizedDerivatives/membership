@@ -38,30 +38,31 @@ class InformationBox extends Component {
 
     //self.requestMembership(newUser.address)
 
-    axios
-      .post('/api/users/subscribe', newUser)
-      .then(res => {
-        self.requestMembership(newUser.address)
-        self.setState({ loading: true, errorMessage: null })
-      })
-      .catch(err => {
-        console.log('CATCH ERROR', err)
-        self.setState({ errorMessage: err.response.data.message, loading: false })
-      })
+    // axios
+    //   .post('/api/users/subscribe', newUser)
+    //   .then(res => {
+    //     self.requestMembership(newUser.address)
+    //     self.setState({ loading: true, errorMessage: null })
+    //   })
+    //   .catch(err => {
+    //     console.log('CATCH ERROR', err)
+    //     self.setState({ errorMessage: err.response.data.message, loading: false })
+    //   })
 
-    var selifiedInfo = {
-      mobile: this.state.phone,
-      type: 'sms'
-    }
-    var headers = {
-      'Authorization': "Bearer 1hfeZ9IsV345H6SdrksAle",
-      'Cache-Control': "no-cache",
-      'content-type': "application/json"
-    }
     self.setState({showModal:true})
     
     axios
-    .post(`https://lab.selified.com/api/request/facematch-id`, selifiedInfo, headers)
+    .post(`https://lab.selified.com/api/request/facematch-id`,
+    {
+      type: 'sms',
+      mobile: this.state.phone
+    }
+    , 
+    {headers: {
+      'Authorization': "Bearer 1hfeZ9IsV345H6SdrksAle",
+      'Content-Type': "application/json"
+    }
+    })
     .then( res => {
       self.setState({loading: false,showModal:true})
     })
