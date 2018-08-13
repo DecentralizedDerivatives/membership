@@ -35,7 +35,6 @@ class InformationBox extends Component {
       address: this.state.address
     }
     var self = this
-
     self.requestMembership(newUser.address)
 
     axios
@@ -46,32 +45,20 @@ class InformationBox extends Component {
       })
       .catch(err => {
         console.log('CATCH ERROR', err)
-        self.setState({ errorMessage: err.response.data.message, loading: false })
+        self.setState({ errorMessage: err.message, loading: false })
       })
 
-    self.setState({showModal:true})
-    
-    axios
-    .post(`https://lab.selified.com/api/request/facematch-id`,
-    {
-      type: 'sms',
-      mobile: this.state.phone
-    }
-    , 
-    {headers: {
-      'Authorization': "Bearer 1hfeZ9IsV345H6SdrksAle",
-      'Content-Type': "application/json"
-    }
-    })
-    .then( res => {
-      self.setState({loading: false,showModal:true})
-    })
-    .catch(err => {
-      console.log('CATCH ERROR', err)
-      self.setState({ errorMessage: err.response.data.message, loading: false})
-    })
-      
+    self.setState({ showModal: true })
 
+    axios
+      .post('/api/idcheck', { phone: this.state.phone })
+      .then(res => {
+        self.setState({loading: false, showModal: true})
+      })
+      .catch(err => {
+        console.log('CATCH ERROR', err)
+        self.setState({ errorMessage: err.message, loading: false })
+      })
   }
   async requestMembership (address) {
     var self = this
@@ -82,7 +69,7 @@ class InformationBox extends Component {
       if (process.env.NODE_ENV === 'dev') {
         options.gas = 7652476
       }
-      var receipt = await memberContract.methods.requestMembership().send(options)
+      await memberContract.methods.requestMembership().send(options)
       self.props.action()
     } catch (e) {
       console.log('MEMBERSHIP ERROR', e)
@@ -97,7 +84,7 @@ class InformationBox extends Component {
           handleChange={this.handleChange}
           loading={this.state.loading}
           action={this.handleSubmit} />
-          <ThankYouModal showModal={this.state.showModal}/>
+        <ThankYouModal showModal={this.state.showModal} />
       </div>
     )
   }

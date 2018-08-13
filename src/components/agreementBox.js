@@ -14,15 +14,15 @@ function AgreementBox (props) {
   const content = (
     <Typography className={classes.content} component='div'>
       <h4>Agreement to become a Member</h4>
-      <p>
+      <div>
         I (We),
-        <p style={{width: 400, display: 'table'}}>
+        <div style={{padding: '18px 0', width: '400px', display: 'table'}}>
           <span style={{display: 'table-cell', borderBottomWidth: 1, borderBottomColor: 'black', borderBottomStyle: 'solid'}} />
-        </p>
+        </div>
         (hereafter “Joining Member”), hereby agree to
         purchase one Membership Interest in the Decentralized Derivatives Association (hereafter “DDA”),
         a Minnesota cooperative association incorporated under MN Statute 308B.
-      </p>
+      </div>
       <h4>Acceptance and Payment</h4>
       <p>
       If the Cooperative accepts this Membership Agreement, I (we) agree to pay the Membership Fee defined in the Bylaws.
