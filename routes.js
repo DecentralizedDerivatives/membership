@@ -2,9 +2,33 @@
 
 var express = require('express')
 var router = express.Router()
+const axios = require('axios')
 const validateSubscribeInput = require('./utilities/subscribe')
 
 const User = require('./models/user')
+
+router.post('/idcheck', handleIdentityCheck)
+function handleIdentityCheck (req, res) {
+  axios
+    .post(`https://lab.selified.com/api/request/facematch-id`,
+      {
+        type: 'sms',
+        mobile: req.body.phone
+      },
+      {
+        headers: {
+          Authorization: 'Bearer 1hfeZ9IsV345H6SdrksAle',
+          'Content-Type': 'application/json'
+        }
+      }
+    ).then(result => {
+      console.log('success: ', result.data)
+      res.json(result.data)
+    }).catch(err => {
+      console.log('SELIFIED ERROR', err)
+      res.status(400).json({message: 'ERROR: ' + err.message, err})
+    })
+}
 
 router.get('/test', handleApiTest)
 
