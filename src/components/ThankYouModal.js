@@ -8,9 +8,8 @@ function ThankYouModal (props) {
 
     return (
         <Dialog aria-labelledby="simple-dialog-title" open={showModal}>
-          <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+          <DialogTitle id="simple-dialog-title">Thanks for becoming a member!</DialogTitle>
           <DialogContent>
-            <p>Thanks for becoming a member!</p>
             <p>
                 You will soon be receiving a text with instructions on completing the KYC/AML requirements of membership.
             </p>
