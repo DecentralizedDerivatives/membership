@@ -38,7 +38,7 @@ const styles = theme => ({
 })
 
 function BoxLayout (props) {
-  const { classes, headline, content, buttonText, buttonAction } = props
+  const { classes, headline, content, buttonText, buttonAction, buttonDisabled } = props
   return (
     <div>
       <Paper elevation={4} className={classes.boxLayout}>
@@ -54,7 +54,7 @@ function BoxLayout (props) {
         <div className={classes.boxFooter}>
           {props.loading ? <LinearProgress />
             : buttonAction
-              ? <Button variant='raised' className={classes.button} onClick={buttonAction}>
+              ? <Button variant='raised' disabled={buttonDisabled} className={classes.button} onClick={buttonAction}>
                 {buttonText}
               </Button>
               : ''

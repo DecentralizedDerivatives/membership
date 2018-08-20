@@ -27,10 +27,14 @@ class Main extends Component {
   }
   async componentDidMount () {
     try {
+      if (!web3 || !web3.eth) {
+        this.setState({ connected: false, connectionMessage: 'Ethereum connection required.' })
+        return
+      }
       const accounts = await web3.eth.getAccounts()
       const network = await web3.eth.net.getId()
       if (!accounts.length || network !== 1) {
-        this.setState({ connected: false, connectionMessage: 'Ethereum Mainnet Testnet required.' })
+        this.setState({ connected: false, connectionMessage: 'Ethereum Mainnet Required.' })
         return
       } else {
         this.setState({ connected: true, connectionMessage: '', ethAddress: accounts[0] })
@@ -43,6 +47,7 @@ class Main extends Component {
 
   handleButtonClick (action, e) {
     if (e && e.preventDefault) { e.preventDefault() }
+    if (!this.state.connected) { return }
     this.setState({ step: action })
     window.scrollTo(0, 0)
   }
@@ -57,7 +62,10 @@ class Main extends Component {
       case STEP_DONE:
         return (<DoneBox />)
       default:
-        return (<WelcomeBox action={this.handleButtonClick.bind(this, STEP_AGREEMENT)} />)
+        return (<WelcomeBox
+          message={this.state.connectionMessage}
+          action={this.handleButtonClick.bind(this, STEP_AGREEMENT)} />
+        )
     }
   }
   render () {
