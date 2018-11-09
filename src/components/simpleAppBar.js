@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Lens from '@material-ui/icons/Lens'
 import { Link } from 'react-router-dom'
-import logo from '../../images/dda-logo.png'
+import logo from '../../images/WhiteText_IconGreyScale.png'
 
 var styles = function (theme) {
   return {
@@ -58,7 +58,7 @@ function SimpleAppBar (props) {
         <Grid item>
           <Link to={'/'}>
             <div className='logo'>
-              <img src={logo} width='70' alt='Logo' height='70' className={classes.logo} />
+              <img src={logo} alt='Logo' height='55' className={classes.logo} />
             </div>
           </Link>
         </Grid>

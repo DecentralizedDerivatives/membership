@@ -18,15 +18,15 @@ function WelcomeBox (props) {
   const { classes, action, message } = props
   const content = (
     <Typography className={classes.content} component='div'>
-      Welcome to DDA!
-      <div>This webpage will take your basic info and the membership fee (be sure that metamask is installed on the mainnet!)</div>
-      <p>Once complete, you will be asked to do KYC/AML validation in an email sent to you.  Once approved, you will be an official member of DDA!</p>
+      Welcome to Daxia!
+      <div>This webpage will take your basic info and the membership fee (about a buck to make sure you're real, be sure that metamask is installed on the mainnet!)</div>
+      <p>Once complete, you will be asked to do KYC/AML validation in an email sent to you.  Once approved, you will be an official member of Daxia!</p>
       {message ? <div className={classes.warning}>{message}</div> : ''}
     </Typography>
   )
   return (
     <BoxLayout
-      headline='DDA Membership Signup'
+      headline='Daxia Alliance Signup'
       content={content}
       buttonText='Begin'
       buttonDisabled={message !== ''}

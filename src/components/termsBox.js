@@ -15,10 +15,10 @@ function TermsBox (props) {
     <Typography className={classes.content} component='div'>
       <h2>Terms</h2>
       <p>
-        Please read these Terms of Service (this “Agreement”) carefully. Your use or access of this or any DDA Service or application (as defined below) constitutes your consent to this Agreement.
+        Please read these Terms of Service (this “Agreement”) carefully. Your use or access of this or any Daxia Service or application (as defined below) constitutes your consent to this Agreement.
       </p>
       <p>
-        This Agreement is between you and the Decentralized Derivatives Association (“DDA” or “we” or “us”) concerning your use of (including any access to) DDA’s website, mobile applications, and web applications, together with any materials and services available therein, and successor website(s) or application(s) thereto (collectively, the “Service”). This Agreement hereby incorporates by this reference any additional terms and conditions with respect to the Service posted by Company to the Service, or otherwise made available to you by Company, including the Privacy Policy and the FAQ (each as defined below).
+        This Agreement is between you and the Daxia(or “we” or “us”) concerning your use of (including any access to) Daxia’s website, mobile applications, and web applications, together with any materials and services available therein, and successor website(s) or application(s) thereto (collectively, the “Service”). This Agreement hereby incorporates by this reference any additional terms and conditions with respect to the Service posted by Company to the Service, or otherwise made available to you by Company, including the Privacy Policy and the FAQ (each as defined below).
       </p>
       <p>
         By clicking or tapping any button or box marked “accept”, “agree”, or “OK” (or a similar term) in connection with this Agreement, or by accessing or using the Service, you agree to be bound by this Agreement and affirm that you are of legal age to enter into this Agreement where you live and have the legal capacity to enter into this Agreement.
@@ -165,14 +165,14 @@ This Agreement contains a mandatory arbitration provision (unless you opt out as
           <p>
             <strong>Eligibility and Compliance.</strong> You agree that you are fully able and competent to enter into the terms, conditions, obligations, affirmations, representations and warranties set forth in these Terms and to abide by and comply with these Terms and that we are not responsible for determining whether or which laws may apply to your Transactions, including tax laws. You are solely responsible for reporting of any transactions and paying any taxes arising from your use of the Service and participation in any Transaction.
 
-          You further represent that you are otherwise legally permitted to use the service in your jurisdiction including owning cryptographic tokens of value and interacting with the Service or Content in any way. You further represent you are responsible for ensuring compliance with the laws of your jurisdiction and acknowledge that DDA is not liable for your compliance with such laws. Finally, you represent and warrant that you will not use the Service for any illegal activity.
+          You further represent that you are otherwise legally permitted to use the service in your jurisdiction including owning cryptographic tokens of value and interacting with the Service or Content in any way. You further represent you are responsible for ensuring compliance with the laws of your jurisdiction and acknowledge that Daxia is not liable for your compliance with such laws. Finally, you represent and warrant that you will not use the Service for any illegal activity.
 
           </p>
           <p>
             <strong>You are aware of and accept the risk of operational challenges.</strong> The Service may experience sophisticated cyber-attacks, unexpected surges in activity, or other operational or technical difficulties that may cause interruptions to or delays on the Service. You agree to accept the risk of a Transaction failure resulting from unanticipated or heightened technical difficulties, including those resulting from sophisticated attacks, and you agree not to hold us accountable for any related losses. We will not bear any liability, whatsoever, for any damage or interruptions caused by any Viruses that may affect your computer or other equipment, or any phishing, spoofing, or other attack. We advise the regular use of a reputable and readily available Virus screening and prevention software.
           </p>
           <p>
-          <strong> DDA Must Comply with Applicable Law. </strong>We comply with all legal requests for information, and reserve the right to provide information, including Transaction Information, to law enforcement personnel and other third parties to answer inquiries, to respond to legal process, to respond to the order of a court of competent jurisdiction and those exercising the court’s authority, and to protect the Company and our users.
+          <strong> Daxia Must Comply with Applicable Law. </strong>We comply with all legal requests for information, and reserve the right to provide information, including Transaction Information, to law enforcement personnel and other third parties to answer inquiries, to respond to legal process, to respond to the order of a court of competent jurisdiction and those exercising the court’s authority, and to protect the Company and our users.
           </p>
         </li>
         <li>
@@ -239,10 +239,10 @@ This Agreement contains a mandatory arbitration provision (unless you opt out as
       </p>
       <h4>Personal Information</h4>
       <p>
-       “Personal Information” is information that identifies you as an individual or relates to an identifiable individual, such as name and email address. We may collect Personal Information from Users when they voluntarily provide it to us in a variety of ways, including, but not limited to, when Users visit our Service, subscribe to our newsletters, fill out a form, or in connection with other activities, services, features or resources we make available on our Service. Users may visit our Service without providing Personal Information. Users can always refuse to supply Personal Information; however, doing so may prevent them from membership to DDA or engaging in certain Service-related activities.
+       “Personal Information” is information that identifies you as an individual or relates to an identifiable individual, such as name and email address. We may collect Personal Information from Users when they voluntarily provide it to us in a variety of ways, including, but not limited to, when Users visit our Service, subscribe to our newsletters, fill out a form, or in connection with other activities, services, features or resources we make available on our Service. Users may visit our Service without providing Personal Information. Users can always refuse to supply Personal Information; however, doing so may prevent them from membership to Daxia or engaging in certain Service-related activities.
       </p>
       <h4>How We Use Personal Information</h4>
-      <p>DDA may use Personal Information for the following purposes:</p>
+      <p>Daxia may use Personal Information for the following purposes:</p>
       <ul>
         <li>To respond to a User’s inquiries or fulfill a User’s requests and provide related customer service.</li>
         <li>To send administrative information to a User, such as changes to our terms, conditions, and policies.</li>
@@ -313,7 +313,7 @@ This Agreement contains a mandatory arbitration provision (unless you opt out as
       </p>
       <h4>Changes to this Privacy Policy</h4>
       <p>
-        DDA may update this Privacy Policy at any time. When we do, we will revise the updated date at the top of this document. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of modifications. Your continued use of the Service following the posting of changes to this policy will be deemed your acceptance of those changes.
+        Daxia may update this Privacy Policy at any time. When we do, we will revise the updated date at the top of this document. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of modifications. Your continued use of the Service following the posting of changes to this policy will be deemed your acceptance of those changes.
       </p>
       <h4>Your Acceptance of this Privacy Policy</h4>
       <p>
@@ -322,7 +322,7 @@ This Agreement contains a mandatory arbitration provision (unless you opt out as
       <h4>Contacting Us</h4>
       <p>
         If you have any questions about this Privacy Policy, please contact us at:
-        <a href={'mailto:info@ddacoop.org'}>info@ddacoop.org</a>
+        <a href={'mailto:info@daxia.us'}>info@daxia.us</a>
       </p>
 
     </Typography>

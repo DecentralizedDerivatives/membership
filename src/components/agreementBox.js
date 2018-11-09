@@ -67,7 +67,7 @@ function AgreementBox (props) {
   )
   return (
     <BoxLayout
-      headline='DDA Membership Agreement'
+      headline='Daxia Membership Agreement'
       content={content}
       buttonText='Agree'
       buttonAction={action} />

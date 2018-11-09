@@ -15,15 +15,15 @@ function ThankYouModal (props) {
             </p>
             <p>
                 Once completed, it usually takes about 24 hours to fully activate your account.  If you have any questions, please don’t hesitate to reach out to us at:
-                <a href="mailto:info@ddacoop.org">info@ddacoop.org</a>
+                <a href="mailto:info@daxia.us">info@daxia.us</a>
             </p>
             <p>
-                In the meantime, feel free to <a href="https://test.decentralizedderivatives.org/">try out our dapp </a> on the Rinkeby testnet or read some articles on our <a href="https://medium.com/@nfett"> Medium.</a>
+                In the meantime, feel free to <a href="https://dapp.daxia.us">head to our dApp </a>or read some articles on our <a href="https://medium.com/@nfett"> Medium.</a>
             </p>
             <p>
                 Welcome to the revolution.
             </p>
-            <p>-DDA Team</p>
+            <p>-Daxia Team</p>
           </DialogContent>
         </Dialog>
     )
